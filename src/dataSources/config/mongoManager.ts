@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+import { Collection, MongoClient } from "mongodb";
 
 export class MongoManager {
   public static instace: MongoManager;
@@ -16,5 +16,10 @@ export class MongoManager {
     if (!this.client) {
       this.client = await MongoClient.connect(url);
     }
+  }
+
+  public getCollection(name: string): Collection {
+    if (!this.client) throw new Error("MongoClient is not connect");
+    return this.client?.db().collection(name);
   }
 }

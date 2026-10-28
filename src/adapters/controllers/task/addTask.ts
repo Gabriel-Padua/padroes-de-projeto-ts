@@ -9,9 +9,13 @@ import {
 import { Request, Response } from "express";
 import { Controller } from "../../interfaces/controller";
 import { DateValidator } from "../../interfaces/dateValidator";
+import { AddTask } from "../../../usecases/addTask";
 
 export class AddTaskController implements Controller {
-  constructor(private readonly dateValidator: DateValidator) {}
+  constructor(
+    private readonly addTask: AddTask,
+    private readonly dateValidator: DateValidator,
+  ) {}
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     const requiredFields = ["title", "description", "date"];

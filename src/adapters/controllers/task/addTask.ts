@@ -33,7 +33,7 @@ export class AddTaskController implements Controller {
       return badRequest(new InvalidParamError("date"));
     }
 
-    const task = { title, description, date };
+    const task = await this.addTask.add({ title, description, date });
     return created(task);
   }
 }

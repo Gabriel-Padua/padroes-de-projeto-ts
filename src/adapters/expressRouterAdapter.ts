@@ -9,8 +9,8 @@ export const expressRouterAdapter = (controller: Controller) => {
 
     const httpResponse = await controller.handle(httpRequest);
 
-    if (httpResponse.statusCode === 201) {
-      res.status(httpResponse.statusCode).json({message: "Criado com sucesso!", body: httpResponse.body});
+    if (httpResponse.statusCode === 201 || httpResponse.statusCode == 204) {
+      res.status(httpResponse.statusCode).json({ body: httpResponse.body });
     } else {
       res
         .status(httpResponse.statusCode)

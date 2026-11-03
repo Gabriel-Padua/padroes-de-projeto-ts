@@ -4,7 +4,7 @@ import { DateValidation } from "../validations/dateValidation";
 import { RequiredFieldsValidation } from "../validations/requiredFieldsValidation";
 import { ValidatorComposite } from "../validations/validationComposite";
 
-export const AddTaskValidationCompositeFactory = (): ValidatorComposite => {
+export const addTaskValidationCompositeFactory = (): ValidatorComposite => {
   const validations: Validation[] = [];
 
   for (const field of ["title", "description", "date"]) {
